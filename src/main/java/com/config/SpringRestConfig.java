@@ -14,7 +14,5 @@ public class SpringRestConfig extends ResourceConfig {
 
         //必须注册jackson，否则无法根据application/json 将pojo生成json
         register(JacksonJsonProvider.class);
-
-        //  registerClasses(new Class[]{RequestContextFilter.class, UserController.class});
     }
 }
