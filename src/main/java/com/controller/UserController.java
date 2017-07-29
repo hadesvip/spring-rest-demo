@@ -1,25 +1,21 @@
 package com.controller;
 
 import com.domain.User;
-import org.springframework.stereotype.Component;
-
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by wangyong on 2017/7/25.
  */
-@Path("/user")
-@Component
+
+@RestController
+@RequestMapping("/user")
 public class UserController {
 
-    @GET
-    @Path("/getUser/{userId}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public User getUser(@PathParam("userId") String userId) {
+    @GetMapping("/getUser/{userId}")
+    public User getUser(@PathVariable String userId) {
         System.out.println("userId:" + userId);
         User user = new User();
         user.setAge(20);

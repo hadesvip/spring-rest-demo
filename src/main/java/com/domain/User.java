@@ -9,7 +9,6 @@ import javax.xml.bind.annotation.XmlRootElement;
  * Created by wangyong on 2017/7/25.
  */
 @Data
-@XmlRootElement
 public class User {
 
     /**
