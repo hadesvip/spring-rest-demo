@@ -12,6 +12,19 @@
     </context:component-scan>
 
 
+    <!--thymeleaf-->
+    <bean id="templateResolver" class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver">
+        <property name="prefix" value="/WEB-INF/template/"/>
+        <property name="suffix" value=".html"/>
+        <property name="templateMode" value="HTML"/>
+        <property name="cacheable" value="true"/>
+    </bean>
+
+    <bean class="org.thymeleaf.spring4.SpringTemplateEngine">
+        <property name="templateResolver" ref="templateResolver"/>
+        <property name="enableSpringELCompiler" value="true"/>
+    </bean>
+
     <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
         <property name="supportedMediaTypes">
             <list>
@@ -23,6 +36,19 @@
             <bean class="com.fasterxml.jackson.databind.ObjectMapper">
                 <property name="serializationInclusion" value="NON_NULL"/>
             </bean>
+        </property>
+    </bean>
+
+    <mvc:resources mapping="/images/**" location="/images/"/>
+    <mvc:resources mapping="/css/**" location="/css/"/>
+    <mvc:resources mapping="/js/**" location="/js/"/>
+
+    <!--拦截webscoket请求-->
+    <bean class="org.springframework.web.socket.server.support.OriginHandshakeInterceptor">
+        <property name="allowedOrigins">
+            <list>
+                <value>http://127.0.0.1</value>
+            </list>
         </property>
     </bean>
 

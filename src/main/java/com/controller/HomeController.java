@@ -1,16 +1,20 @@
 package com.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
+ * 首页
  * Created by wangyong on 2017/7/29.
  */
-@RestController
+@Controller
 public class HomeController {
 
-    @GetMapping("/")
-    public String index() {
-        return "springmvc-rest start....";
+    @GetMapping("/index")
+    public String index(HttpServletRequest request) {
+        request.setAttribute("title", "首页");
+        return "index";
     }
 }
